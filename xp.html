@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes expériences et formations</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-black to-blue-900 text-gray-200 min-h-screen flex flex-col">
+
+<header class="p-6 bg-opacity-50">
+  <div class="flex items-center justify-between flex-wrap">
+    <!-- Bloc gauche : logo + nom -->
+    <div class="flex items-center space-x-4">
+      <img src="img/logo.png" alt="logo" class="w-16 h-16">
+      <h1 class="text-3xl font-bold text-center">Armand BACCONIN</h1>
+    </div>
+
+    <!-- Bloc droite : navigation -->
+    <nav class="mt-4 sm:mt-0">
+      <ul class="flex space-x-6 text-lg">
+        <li><a href="index.html" class="hover:underline">Accueil</a></li>
+        <li class="border-l border-gray-400 pl-6 font-bold"><a href="xp.html" class="hover:underline">Expérience et formation</a></li>
+        <li class="border-l border-gray-400 pl-6"><a href="projets.html" class="hover:underline">Mes compétences</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- ligne de séparation -->
+  <div class="border-t border-gray-400 mt-4 w mx-auto"></div>
+</header>
+
+<main class="flex-grow p-10 max-w-4xl mx-auto">
+  <h2 class="text-3xl font-bold mb-8 text-center">Expériences et Formations</h2>
+
+  <div class="space-y-8">
+    <div class="border-l-4 border-green-500 pl-4">
+      <p class="text-lg font-semibold text-green-400">Novembre 2024 - Alternance</p>
+      <p>Service informatique de la Communauté de Commune de la Vallée du Garon</p>
+    </div>
+    <div class="border-l-4 border-blue-500 pl-4">
+      <p class="text-lg font-semibold text-blue-400">2023 - BUT Informatique</p>
+      <p>Université Lyon 1 - Développement d'Applications Communicantes et Sécurisées.</p>
+    </div>
+    <div class="border-l-4 border-blue-500 pl-4">
+      <p class="text-lg font-semibold text-blue-400">2023 - Baccalauréat Général - Mention Bien</p>
+      <p>Lycée René Descartes Saint-Genis-Laval - Spécialité Mathématiques et Informatique.</p>
+    </div>
+    <div class="border-l-4 border-green-500 pl-4">
+      <p class="text-lg font-semibold text-green-400">2022 - Stage</p>
+      <p>La Coworquie - Restructuration d'un site Web</p>
+    </div>
+  </div>
+  <button class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition mt-20">Découvrez mes réalisations</button>
+</main>
+
+
+<script src="js/app.js"></script>
+</body>
+</html>

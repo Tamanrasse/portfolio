@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Armand Bacconin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-r from-black to-blue-900 text-gray-200 min-h-screen flex flex-col">
+
+<header class="p-6 bg-opacity-50">
+  <div class="flex items-center justify-between flex-wrap">
+    <!-- Bloc gauche : logo + nom -->
+    <div class="flex items-center space-x-4">
+      <img src="img/logo.png" alt="logo" class="w-16 h-16">
+      <h1 class="text-3xl font-bold text-center">Armand BACCONIN</h1>
+    </div>
+
+    <!-- Bloc droite : navigation -->
+    <nav class="mt-4 sm:mt-0">
+      <ul class="flex space-x-6 text-lg">
+        <li class="font-bold"><a href="index.html" class="hover:underline">Accueil</a></li>
+        <li class="border-l border-gray-400 pl-6"><a href="xp.html" class="hover:underline">Expérience et formation</a></li>
+        <li class="border-l border-gray-400 pl-6"><a href="projets.html" class="hover:underline">Mes compétences</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- ligne de séparation -->
+  <div class="border-t border-gray-400 mt-4 w mx-auto"></div>
+</header>
+
+<main class="flex-grow flex flex-col justify-center items-center text-center p-6">
+  <h1 class="text-3xl font-bold mb-8 text-center">Bienvenue sur mon Portfolio</h1>
+  <p class="mb-6 max-w-2xl">Je suis Armand Bacconin, un passionné d'informatique, spécialisé dans le réseau, les systèmes et la sécurité.</p>
+  <p class="mb-6 max-w-2xl">Découvrez mon parcours, mes réalisations et mes compétences.</p>
+  <button class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">En savoir plus</button>
+</main>
+<script src="js/app.js"></script>
+</body>
+</html>

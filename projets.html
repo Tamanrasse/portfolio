@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Mes Compétences</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .modal {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+  </style>
+  <link rel="icon" href="img/logo.png" />
+</head>
+<body class="bg-gradient-to-r from-black to-blue-900 text-gray-200 min-h-screen flex flex-col font-sans">
+
+<header class="p-6 bg-opacity-50">
+  <div class="flex items-center justify-between flex-wrap">
+    <!-- Bloc gauche : logo + nom -->
+    <div class="flex items-center space-x-4">
+      <img src="img/logo.png" alt="logo" class="w-16 h-16">
+      <h1 class="text-3xl font-bold text-center">Armand BACCONIN</h1>
+    </div>
+
+    <!-- Bloc droite : navigation -->
+    <nav class="mt-4 sm:mt-0">
+      <ul class="flex space-x-6 text-lg">
+        <li><a href="index.html" class="hover:underline">Accueil</a></li>
+        <li class="border-l border-gray-400 pl-6"><a href="xp.html" class="hover:underline">Expérience et formation</a></li>
+        <li class="border-l border-gray-400 pl-6 font-bold"><a href="projets.html" class="hover:underline">Mes compétences</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- ligne de séparation -->
+  <div class="border-t border-gray-400 mt-4 w mx-auto"></div>
+</header>
+
+
+<main class="flex-grow p-10 max-w-7xl mx-auto">
+  <h2 class="text-4xl font-bold mb-12">Mes compétences</h2>
+
+  <p class="mb-12">Découvrez les compétences que j'ai développées à travers les projets réalisés à l'IUT et mes missions en entreprise.
+    <br>Ces compétences s'appuient sur le référenciel de compétences du programme national que vous pouvez retrouver en cliquant <a href="/pdf/referenciel_competences.pdf" target="_blank">ici</a>.</p>
+
+  <!-- Filtres -->
+  <div class="flex justify-center mb-10 space-x-4">
+    <button onclick="filterProjects('all')" class="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded-full text-sm">Tous</button>
+    <button onclick="filterProjects('but1')" class="bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded-full text-sm">BUT1</button>
+    <button onclick="filterProjects('but2')" class="bg-blue-700 hover:bg-blue-600 px-4 py-2 rounded-full text-sm">BUT2</button>
+    <button onclick="filterProjects('alternance')" class="bg-green-700 hover:bg-blue-600 px-4 py-2 rounded-full text-sm">Alternance</button>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-10">
+
+    <!-- Support utilisateur - Alternance -->
+    <div class="project-card alternance bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg p-6 transition transform hover:scale-105 cursor-pointer" onclick="showModal('modal_support')">
+      <div class="flex items-center space-x-4">
+        <img src="/img/support.png" alt="Support utilisateur" class="w-25 h-20 rounded-lg object-cover" />
+        <div>
+          <h3 class="text-xl font-semibold">Support utilisateur</h3>
+          <p class="text-sm text-gray-400">Résolution de tickets et intervention à distance (Alternance)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Maintenance MCO - Alternance -->
+    <div class="project-card alternance bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg p-6 transition transform hover:scale-105 cursor-pointer" onclick="showModal('modal_mco')">
+      <div class="flex items-center space-x-4">
+        <img src="/img/mco.png" alt="Maintenance équipements" class="w-20 h-20 rounded-lg object-cover" />
+        <div>
+          <h3 class="text-xl font-semibold">Maintenance des équipements (MCO)</h3>
+          <p class="text-sm text-gray-400">Mise à jour de BIOS, Windows, WSUS (Alternance)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gestion des droits - Alternance -->
+    <div class="project-card alternance bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg p-6 transition transform hover:scale-105 cursor-pointer" onclick="showModal('modal_droits')">
+      <div class="flex items-center space-x-4">
+        <img src="/img/acces.jpg" alt="Gestion des droits" class="w-20 h-20 rounded-lg object-cover" />
+        <div>
+          <h3 class="text-xl font-semibold">Gestion des droits et accès</h3>
+          <p class="text-sm text-gray-400">Comptes, boîtes mail, partages, VPN (Alternance)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projet NAS - Alternance -->
+    <div class="project-card alternance bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg p-6 transition transform hover:scale-105 cursor-pointer" onclick="showModal('modal_nas')">
+      <div class="flex items-center space-x-4">
+        <img src="/img/nas.png" alt="Projet NAS" class="w-20 h-20 rounded-lg object-cover" />
+        <div>
+          <h3 class="text-xl font-semibold">Projet NAS : sécurité et 2FA</h3>
+          <p class="text-sm text-gray-400">Cartographie, procédures, alertes mail (Alternance)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projet C - BUT2 -->
+    <div class="project-card but2 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg p-6 transition transform hover:scale-105 cursor-pointer" onclick="showModal('modal1')">
+      <div class="flex items-center space-x-4">
+        <img src="/img/2fa.jpg" alt="Projet C" class="w-20 h-20 rounded-lg object-cover" />
+        <div>
+          <h3 class="text-xl font-semibold">Scripts C avec Double Authentification</h3>
+          <p class="text-sm text-gray-400">Client/serveur sécurisé (BUT2)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projet Java - BUT1 -->
+    <div class="project-card but1 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg p-6 transition transform hover:scale-105 cursor-pointer" onclick="showModal('modal2')">
+      <div class="flex items-center space-x-4">
+        <img src="/img/java.png" alt="Projet Java" class="w-57 h-20 rounded-lg object-cover" />
+        <div>
+          <h3 class="text-xl font-semibold">Visualisation de vols avec graphes</h3>
+          <p class="text-sm text-gray-400">Application Java (BUT1)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projet Réseau Social Sportif - BUT2 -->
+    <div class="project-card but2 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg p-6 transition transform hover:scale-105 cursor-pointer" onclick="showModal('modal5')">
+      <div class="flex items-center space-x-4">
+        <img src="/img/php.png" alt="Réseau social sportif" class="w-20 h-20 rounded-lg object-cover" />
+        <div>
+          <h3 class="text-xl font-semibold">Réseau Social pour Sportifs</h3>
+          <p class="text-sm text-gray-400">Application web en PHP (BUT2)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projet OCS Inventory - Alternance -->
+    <div class="project-card alternance bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg p-6 transition transform hover:scale-105 cursor-pointer" onclick="showModal('modal3')">
+      <div class="flex items-center space-x-4">
+        <img src="/img/ocs.png" alt="OCS Inventory" class="w-20 h-20 rounded-lg object-cover" />
+        <div>
+          <h3 class="text-xl font-semibold">Déploiement de serveur d'inventaire (OCS)</h3>
+          <p class="text-sm text-gray-400">Mise en place de l'inventaire réseau (Alternance)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projet Remplacement de postes - Alternance -->
+    <div class="project-card alternance bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg p-6 transition transform hover:scale-105 cursor-pointer" onclick="showModal('modal4')">
+      <div class="flex items-center space-x-4">
+        <img src="/img/postes.jpg" alt="Remplacement postes" class="w-20 h-20 rounded-lg object-cover" />
+        <div>
+          <h3 class="text-xl font-semibold">Remplacement de postes informatiques</h3>
+          <p class="text-sm text-gray-400">Mise à jour du parc (Alternance)</p>
+        </div>
+      </div>
+    </div>
+    <!-- Carte Projet Oracle - BUT1 -->
+    <div class="project-card but1 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg p-6 transition transform hover:scale-105 cursor-pointer" onclick="showModal('modal6')">
+      <div class="flex items-center space-x-4">
+        <img src="/img/oracle.png" alt="Oracle DB" class="w-25 h-20 rounded-lg object-cover" />
+        <div>
+          <h3 class="text-xl font-semibold">Base de données Oracle</h3>
+          <p class="text-sm text-gray-400">Gestion centre de formation médicale (BUT1)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte Projet Power BI - BUT1 -->
+    <div class="project-card but1 bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-lg p-6 transition transform hover:scale-105 cursor-pointer" onclick="showModal('modal7')">
+      <div class="flex items-center space-x-4">
+        <img src="/img/powerbi.jpg" alt="Power BI" class="w-20 h-20 rounded-lg object-cover" />
+        <div>
+          <h3 class="text-xl font-semibold">Dashboard Power BI</h3>
+          <p class="text-sm text-gray-400">Pilotage stratégique (BUT1)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+
+<div id="modal1" class="modal hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div class="bg-gray-900 text-white w-full max-w-3xl rounded-lg shadow-lg p-8 relative">
+    <button onclick="closeModal('modal1')" class="absolute top-4 right-4 text-white text-xl">&times;</button>
+    <h2 class="text-2xl font-bold mb-4">Scripts C avec Double Authentification</h2>
+    <p class="mb-4">Création de scripts C pour gérer un client et un serveur, sécurisés par double authentification et hachage.</p>
+    <div class="space-y-4 text-sm">
+      <div>
+        <h3 class="text-blue-400 font-semibold">🔹 Réaliser</h3>
+        <ul class="list-disc ml-6">
+          <li><strong>CE1.2</strong> | Appliquer les principes de sécurité (chiffrement TLS, hachage des mots de passe).</li>
+          <li><strong>CE1.3</strong> | Choisir les ressources techniques (sockets, librairies crypto).</li>
+          <li><strong>ACTI 0.5</strong> | Développer une application complète à partir d'exigences fonctionnelles.</li>
+          <li><strong>ACTI 0.8</strong> | Valider la qualité via des tests unitaires et d'intégration.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-indigo-400 font-semibold">🔹 Optimiser</h3>
+        <ul class="list-disc ml-6">
+          <li><strong>CE2.2</strong> | Formaliser des solutions complexes (architecture client/serveur).</li>
+          <li><strong>AC22.02</strong> | Utiliser des techniques algorithmiques avancées (gestion des sessions sécurisées).</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-purple-400 font-semibold">🔹 Administrer</h3>
+        <ul class="list-disc ml-6">
+          <li><strong>CE3.2</strong> | Sécuriser le système (2FA, journalisation des accès).</li>
+          <li><strong>AC20.03</strong> | Mettre en œuvre des politiques de sécurité (RBAC).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL Projet 3 - OCS Inventory -->
+<div id="modal3" class="modal hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div class="bg-gray-900 text-white w-full max-w-3xl rounded-lg shadow-lg p-8 relative">
+    <button onclick="closeModal('modal3')" class="absolute top-4 right-4 text-white text-xl">&times;</button>
+    <h2 class="text-2xl font-bold mb-4">Déploiement de serveur d'inventaire OCS</h2>
+    <p class="mb-4">Mise en place d’un serveur OCS Inventory pour automatiser l’inventaire matériel et logiciel du parc informatique.</p>
+    <div class="space-y-4 text-sm">
+      <div>
+        <h3 class="text-purple-400 font-semibold">🔹 Administrer</h3>
+        <ul class="list-disc ml-6">
+          <li>CE3.01, CE3.02, CE3.04</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-green-400 font-semibold">🔹 Collaborer</h3>
+        <ul class="list-disc ml-6">
+          <li>CE6.01, CE6.04</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL Projet 4 - Remplacement de postes -->
+<div id="modal4" class="modal hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div class="bg-gray-900 text-white w-full max-w-3xl rounded-lg shadow-lg p-8 relative">
+    <button onclick="closeModal('modal4')" class="absolute top-4 right-4 text-white text-xl">&times;</button>
+    <h2 class="text-2xl font-bold mb-4">Remplacement de postes informatiques</h2>
+    <p class="mb-4">Préparation, installation et mise en réseau de nouveaux postes pour la modernisation du parc.</p>
+    <div class="space-y-4 text-sm">
+      <div>
+        <h3 class="text-purple-400 font-semibold">🔹 Administrer</h3>
+        <ul class="list-disc ml-6">
+          <li>CE3.01, CE3.03</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-green-400 font-semibold">🔹 Collaborer</h3>
+        <ul class="list-disc ml-6">
+          <li>CE6.01, CE6.02</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL Projet 5 - Réseau Social Sportif -->
+<div id="modal5" class="modal hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div class="bg-gray-900 text-white w-full max-w-3xl rounded-lg shadow-lg p-8 relative">
+    <button onclick="closeModal('modal5')" class="absolute top-4 right-4 text-white text-xl">&times;</button>
+    <h2 class="text-2xl font-bold mb-4">Réseau Social pour Sportifs</h2>
+    <p class="mb-4">Développement d’une application web PHP pour publier des contenus liés à des sports, suivre des utilisateurs et organiser les publications par catégorie.</p>
+    <div class="space-y-4 text-sm">
+      <div>
+        <h3 class="text-blue-400 font-semibold">🔹 Réaliser</h3>
+        <ul class="list-disc ml-6">
+          <li>CE1.04, CE1.06</li>
+          <li>AC21.01 à AC21.04</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-indigo-400 font-semibold">🔹 Optimiser</h3>
+        <ul class="list-disc ml-6">
+          <li>CE2.02</li>
+          <li>AC22.02</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-purple-400 font-semibold">🔹 Administrer</h3>
+        <ul class="list-disc ml-6">
+          <li>CE3.01, CE3.03</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-green-400 font-semibold">🔹 Collaborer</h3>
+        <ul class="list-disc ml-6">
+          <li>CE6.01, AC26.03</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL Projet 2 -->
+<div id="modal2" class="modal hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div class="bg-gray-900 text-white w-full max-w-3xl rounded-lg shadow-lg p-8 relative">
+    <button onclick="closeModal('modal2')" class="absolute top-4 right-4 text-white text-xl">&times;</button>
+    <h2 class="text-2xl font-bold mb-4">Visualisation de vols avec graphes</h2>
+    <p class="mb-4">Application Java permettant de visualiser et de gérer des vols d'avions en France à l'aide d'algorithmes de coloration de graphes.</p>
+    <div class="space-y-4 text-sm">
+      <div>
+        <h3 class="text-blue-400 font-semibold">🔹 Réaliser</h3>
+        <ul class="list-disc ml-6">
+          <li>CE1.03, CE1.04</li>
+          <li>AC21.01 à AC21.04 : spécifications, qualité, bonnes pratiques</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-indigo-400 font-semibold">🔹 Optimiser</h3>
+        <ul class="list-disc ml-6">
+          <li>CE2.01, CE2.02, CE2.04</li>
+          <li>AC22.01, AC22.02 : algorithmes de graphes</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-green-400 font-semibold">🔹 Collaborer</h3>
+        <ul class="list-disc ml-6">
+          <li>CE6.01, AC26.03</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL Projet 6 - Base de données Oracle -->
+<div id="modal6" class="modal hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div class="bg-gray-900 text-white w-full max-w-3xl rounded-lg shadow-lg p-8 relative">
+    <button onclick="closeModal('modal6')" class="absolute top-4 right-4 text-white text-xl">&times;</button>
+    <h2 class="text-2xl font-bold mb-4">Base de données Oracle - Centre de formation médicale</h2>
+    <p class="mb-4">Conception et implémentation d'une base de données relationnelle Oracle pour modéliser les activités d’un centre de formation médicale : gestion des cours, formateurs, apprenants et plannings.</p>
+    <div class="space-y-4 text-sm">
+      <div>
+        <h3 class="text-blue-400 font-semibold">🔹 Réaliser</h3>
+        <ul class="list-disc ml-6">
+          <li>CE1.03, CE1.04</li>
+          <li>AC21.01 à AC21.04</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-indigo-400 font-semibold">🔹 Optimiser</h3>
+        <ul class="list-disc ml-6">
+          <li>CE2.02, CE2.04</li>
+          <li>AC22.01, AC22.02</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-purple-400 font-semibold">🔹 Administrer</h3>
+        <ul class="list-disc ml-6">
+          <li>CE3.01, CE3.03</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Support utilisateur -->
+<div id="modal_support" class="modal hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div class="bg-gray-900 text-white max-w-3xl w-full rounded-lg shadow-lg p-8 relative">
+    <button onclick="closeModal('modal_support')" class="absolute top-4 right-4 text-white text-xl">&times;</button>
+    <h2 class="text-2xl font-bold mb-4">Support utilisateur</h2>
+    <p class="mb-4">Traitement de tickets via SimplyDesk : diagnostics, interventions sur site ou à distance. Identification des problèmes récurrents (réseau, matériel, comptes). Apprentissage progressif des résolutions techniques pour gagner en autonomie.</p>
+    <div class="space-y-4 text-sm">
+      <div>
+        <h3 class="text-green-400 font-semibold">🔹 Collaborer</h3>
+        <ul class="list-disc ml-6">
+          <li>CE6.01 | en inscrivant sa démarche au sein d’une équipe pluridisciplinaire</li>
+          <li>CE6.02 | en accompagnant la mise en œuvre des évolutions informatiques</li>
+          <li>CE6.04 | en développant une communication efficace et collaborative</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-purple-400 font-semibold">🔹 Administrer</h3>
+        <ul class="list-disc ml-6">
+          <li>CE3.01 | en sécurisant le système d’information</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Migration de postes -->
+<div id="modal_migration" class="modal hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div class="bg-gray-900 text-white max-w-3xl w-full rounded-lg shadow-lg p-8 relative">
+    <button onclick="closeModal('modal_migration')" class="absolute top-4 right-4 text-white text-xl">&times;</button>
+    <h2 class="text-2xl font-bold mb-4">Installation & migration de postes</h2>
+    <p class="mb-4">Configuration complète : Windows, Office, Cylance, logiciels métiers. Intégration domaine, comptes AD, imprimantes, messagerie. Environ 60 postes déployés d’ici fin 2025.</p>
+    <div class="space-y-4 text-sm">
+      <div>
+        <h3 class="text-purple-400 font-semibold">🔹 Administrer</h3>
+        <ul class="list-disc ml-6">
+          <li>CE3.01 | en sécurisant le système d’information</li>
+          <li>CE3.03 | en appliquant les normes en vigueur et les bonnes pratiques architecturales et de sécurité</li>
+          <li>CE3.04 | en assurant la continuité d’activité</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-green-400 font-semibold">🔹 Collaborer</h3>
+        <ul class="list-disc ml-6">
+          <li>CE6.01 | en inscrivant sa démarche au sein d’une équipe pluridisciplinaire</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal MCO -->
+<div id="modal_mco" class="modal hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div class="bg-gray-900 text-white max-w-3xl w-full rounded-lg shadow-lg p-8 relative">
+    <button onclick="closeModal('modal_mco')" class="absolute top-4 right-4 text-white text-xl">&times;</button>
+    <h2 class="text-2xl font-bold mb-4">Maintenance des équipements (MCO)</h2>
+    <p class="mb-4">Maintenance régulière : mises à jour Windows, BIOS, pilotes et applications métier, en fonction des besoins utilisateurs ou alertes WSUS.</p>
+    <div class="space-y-4 text-sm">
+      <div>
+        <h3 class="text-purple-400 font-semibold">🔹 Administrer</h3>
+        <ul class="list-disc ml-6">
+          <li>CE3.02 | en offrant une qualité de service optimale</li>
+          <li>CE3.04 | en assurant la continuité d’activité</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Gestion des droits -->
+<div id="modal_droits" class="modal hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div class="bg-gray-900 text-white max-w-3xl w-full rounded-lg shadow-lg p-8 relative">
+    <button onclick="closeModal('modal_droits')" class="absolute top-4 right-4 text-white text-xl">&times;</button>
+    <h2 class="text-2xl font-bold mb-4">Gestion des droits et accès</h2>
+    <p class="mb-4">Création/suppression de comptes dans AD, Office 365, Systancia, Ciril. Attribution de droits aux fichiers partagés, configuration VPN, boîtes mail, GPO de connexion à distance.</p>
+    <div class="space-y-4 text-sm">
+      <div>
+        <h3 class="text-purple-400 font-semibold">🔹 Administrer</h3>
+        <ul class="list-disc ml-6">
+          <li>CE3.01 | en sécurisant le système d’information</li>
+          <li>CE3.03 | en appliquant les normes en vigueur et les bonnes pratiques architecturales et de sécurité</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Projet NAS -->
+<div id="modal_nas" class="modal hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div class="bg-gray-900 text-white max-w-3xl w-full rounded-lg shadow-lg p-8 relative">
+    <button onclick="closeModal('modal_nas')" class="absolute top-4 right-4 text-white text-xl">&times;</button>
+    <h2 class="text-2xl font-bold mb-4">Projet NAS - Sécurité</h2>
+    <p class="mb-4">Premier projet personnel. Mise en place de la double authentification sur tous les NAS, cartographie complète, rédaction de procédures, résolution de problèmes liés à l’envoi d’alertes mails bloquées par blacklist d’IP publiques.</p>
+    <div class="space-y-4 text-sm">
+      <div>
+        <h3 class="text-purple-400 font-semibold">🔹 Administrer</h3>
+        <ul class="list-disc ml-6">
+          <li>CE3.01 | en sécurisant le système d’information</li>
+          <li>CE3.03 | en appliquant les normes en vigueur et les bonnes pratiques architecturales et de sécurité</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-green-400 font-semibold">🔹 Collaborer</h3>
+        <ul class="list-disc ml-6">
+          <li>CE6.04 | en développant une communication efficace et collaborative</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL Projet 7 - Power BI pour pilotage entreprise -->
+<div id="modal7" class="modal hidden fixed inset-0 z-50 flex items-center justify-center">
+  <div class="bg-gray-900 text-white w-full max-w-3xl rounded-lg shadow-lg p-8 relative">
+    <button onclick="closeModal('modal7')" class="absolute top-4 right-4 text-white text-xl">&times;</button>
+    <h2 class="text-2xl font-bold mb-4">Power BI - Visualisation stratégique</h2>
+    <p class="mb-4">Création de tableaux de bord Power BI pour synthétiser les résultats d'une entreprise (ventes, finances, performances) afin d'accompagner les prises de décisions stratégiques.</p>
+    <div class="space-y-4 text-sm">
+      <div>
+        <h3 class="text-blue-400 font-semibold">🔹 Réaliser</h3>
+        <ul class="list-disc ml-6">
+          <li>CE1.06</li>
+          <li>AC21.01, AC21.04</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-indigo-400 font-semibold">🔹 Optimiser</h3>
+        <ul class="list-disc ml-6">
+          <li>CE2.02, CE2.04</li>
+          <li>AC22.01, AC22.02</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-green-400 font-semibold">🔹 Collaborer</h3>
+        <ul class="list-disc ml-6">
+          <li>CE6.01, AC26.03</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  function showModal(id) {
+    document.getElementById(id).classList.remove('hidden');
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.add('hidden');
+  }
+  function filterProjects(year) {
+    document.querySelectorAll('.project-card').forEach(card => {
+      if (year === 'all') {
+        card.classList.remove('hidden');
+      } else if (!card.classList.contains(year)) {
+        card.classList.add('hidden');
+      } else {
+        card.classList.remove('hidden');
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
