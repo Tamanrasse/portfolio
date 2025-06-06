@@ -18,3 +18,21 @@ document.querySelectorAll("nav a").forEach(link => {
     }, 500); // Temps synchronisé avec la transition CSS
   });
 });
+
+function showModal(id) {
+  document.getElementById(id).classList.remove('hidden');
+}
+function closeModal(id) {
+  document.getElementById(id).classList.add('hidden');
+}
+function filterProjects(year) {
+  document.querySelectorAll('.project-card').forEach(card => {
+    if (year === 'all') {
+      card.classList.remove('hidden');
+    } else if (!card.classList.contains(year)) {
+      card.classList.add('hidden');
+    } else {
+      card.classList.remove('hidden');
+    }
+  });
+}
