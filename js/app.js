@@ -50,7 +50,7 @@ const values = {
     realiser: 65,
     optimiser: 50,
     administrer: 60,
-    gerer: 70,
+    gerer: 45,
     conduire: 60,
     collaborer: 75,
   }
